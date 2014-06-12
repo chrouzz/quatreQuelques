@@ -17,7 +17,7 @@
 
 module.exports = {
   create: function(req,res){
-    res.view("/create");
+    res.view("signup/create");
   },
 
   process: function(req,res){
