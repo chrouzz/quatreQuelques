@@ -28,10 +28,10 @@ module.exports = {
         return;
       }
       req.logIn(user, function(err){
-        if (err) res.redirect('auth/login');
-        req.session.user.id = user.id;
-        res.redirect('/');
-        console.log("User logged in:", user);
+        if (err) { res.redirect('auth/login'); }
+        //req.session.userId = req.user.id;
+        console.log("User logged in:", user.username);
+        return res.redirect('/');
       });
     })(req, res);
   },

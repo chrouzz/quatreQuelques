@@ -17,7 +17,7 @@
 
 module.exports = {
   profile: function(req,res){
-    User.findOne(req.session.user.id).done(function(err, user) {
+    User.findOne(req.session.userId).done(function(err, user) {
 
       // Error handling
       if (err) {
