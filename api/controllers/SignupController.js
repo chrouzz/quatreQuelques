@@ -17,13 +17,15 @@
 
 module.exports = {
   create: function(req,res){
-    res.view("/create");
+    res.view("signup/create");
   },
 
   process: function(req,res){
+    var username = req.param("username");
+    var password = req.param("password");
     User.create({
-    username: 'Mike',
-    password: 'prout',
+    username: username,
+    password: password,
     }).done(function(err, user) {
 
     // Error handling
@@ -32,9 +34,10 @@ module.exports = {
 
     // The User was created successfully!
     }else {
+      res.redirect('/');
       console.log("User created:", user);
     }
-    })(req, res);
+    });
   },    
   
 

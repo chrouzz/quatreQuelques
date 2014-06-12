@@ -29,7 +29,8 @@ module.exports = {
       }
       req.logIn(user, function(err){
         if (err) res.redirect('auth/login');
-        return res.redirect('/');
+        res.redirect('/');
+        console.log("User logged in:", user);
       });
     })(req, res);
   },
