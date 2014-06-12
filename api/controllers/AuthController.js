@@ -29,6 +29,7 @@ module.exports = {
       }
       req.logIn(user, function(err){
         if (err) res.redirect('auth/login');
+        req.session.user.id = user.id;
         res.redirect('/');
         console.log("User logged in:", user);
       });

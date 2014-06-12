@@ -16,7 +16,20 @@
  */
 
 module.exports = {
-    
+  profile: function(req,res){
+    User.findOne(req.session.user.id).done(function(err, user) {
+
+      // Error handling
+      if (err) {
+      return console.log(err);
+
+      // The User was found successfully!
+      } else {
+        console.log("User found:", user);
+      }
+    });
+    res.view("user/profile");
+  },    
   
 
 
