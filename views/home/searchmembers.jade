@@ -6,7 +6,7 @@ block styles
 block body
 
   label Search members:
-  form(action='/searchmembers', method='post')
+  form(action='/searchmembers/results/page/1', method='post')
     div
       label Sex:
       select(id='sex', name='sex')
@@ -24,5 +24,10 @@ block body
       select(id='age2', name='age2')
         - for (var age = 18; age < 123; age++)
           option(value=age) #{age}
+    div
+      label Sort by:
+      select(id='sort', name='sort')
+        option(value='age') Age
+        option(value='createdAt') Latest member
     div
       input(type='submit', value='Search')

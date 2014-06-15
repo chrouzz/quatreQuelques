@@ -17,21 +17,47 @@
 
 module.exports = {
   profile: function(req,res){
-    User.findOne(req.session.userId).done(function(err, user) {
+    
+    var username = req.param('username');
 
-      // Error handling
-      if (err) {
-      return console.log(err);
+    if(username == null) {
+      User.findOne(req.session.userId).done(function(err, user) {
 
-      // The User was found successfully!
-      } else {
-        username = user.username;
-        email = user.email;
-        age = user.age;
-        console.log("User found:", user);
-      }
-    });
-    res.view("user/profile", {username: username, email: email, age: age});
+        // Error handling
+        if (err) {
+        return console.log(err);
+
+        // The User was found successfully!
+        } else {
+          var myself = 1;
+          username = user.username;
+          email = user.email;
+          sex = user.sex;
+          age = user.age;
+          console.log("User found:", myself);
+          res.view("user/profile", {myself:myself, username: username, email: email, sex: sex, age: age});
+        }
+      });
+    } else {
+      User.findOne({
+        username: username
+      }).done(function(err, user) {
+
+        // Error handling
+        if (err) {
+        return console.log(err);
+
+        // The User was found successfully!
+        } else {
+          var myself = 0;
+          username = user.username;
+          sex = user.sex;
+          age = user.age;
+          console.log("User found:", myself);
+          res.view("user/profile", {myself: myself, username: username, sex: sex, age: age});
+        }
+      });
+    }
   },
   searchMembers: function(req,res){
     res.view("home/searchmembers");
@@ -40,7 +66,25 @@ module.exports = {
     var sex = req.param("sex");
     var age1 = req.param("age1");
     var age2 = req.param("age2");
-
+    var sort = req.param("sort");
+    var page = req.param("page");
+    var numberOfResults = 0;
+    
+    if(sex == null && age1 == null && age2 == null && sort == null) {
+      if(typeof req.session.sex != 'undefined') {
+        sex = req.session.sex;
+        age1 = req.session.age1;
+        age2 = req.session.age2;
+        sort = req.session.sort;
+      } else {
+        console.log("Error");
+      }
+    } else {
+      req.session.sex = sex;
+      req.session.age1 = age1;
+      req.session.age2 = age2;
+      req.session.sort = sort;
+    }
     switch(sex) {
       case "Any":
         var sex1 = "Male";
@@ -59,24 +103,83 @@ module.exports = {
         var sex2 = "Female";
     }
 
-    User.find({
-      or: [{sex: sex1}, {sex: sex2}],
-      age: {
-        '>=': age1,
-        '<=': age2
-      }
-    }).done(function(err, users) {
+    if(sort.indexOf("age") != -1) {
+      User.find({
+        or: [{sex: sex1}, {sex: sex2}],
+        age: {
+          '>=': age1,
+          '<=': age2
+        }
+      }).done(function(err, users) {
 
-      // Error handling
-      if (err) {
-      return console.log(err);
+        // Error handling
+        if (err) {
+        return console.log(err);
 
-      // The User was found successfully!
-      } else {
-        console.log("Users found:", users);
-        res.view("home/searchresults", {users: users});
-      }
-    });
+        // The User was found successfully!
+        } else {
+          numberOfResults = users.length;
+        }
+      });
+      User.find({
+        or: [{sex: sex1}, {sex: sex2}],
+        age: {
+          '>=': age1,
+          '<=': age2
+        }
+      }).paginate({page: parseInt(page), limit: 2})
+      .sort('age ASC')
+      .done(function(err, users) {
+
+        // Error handling
+        if (err) {
+        return console.log(err);
+
+        // The User was found successfully!
+        } else {
+          console.log("Users found:", numberOfResults);
+          res.view("home/searchresults", {users: users, numberOfResults: numberOfResults, page: page});
+        }
+      });
+    } else if(sort.indexOf("createdAt") != -1) {
+      User.find({
+        or: [{sex: sex1}, {sex: sex2}],
+        age: {
+          '>=': age1,
+          '<=': age2
+        }
+      }).done(function(err, users) {
+
+        // Error handling
+        if (err) {
+        return console.log(err);
+
+        // The User was found successfully!
+        } else {
+          numberOfResults = users.length; 
+        }
+      });
+      User.find({
+        or: [{sex: sex1}, {sex: sex2}],
+        age: {
+          '>=': age1,
+          '<=': age2
+        }
+      }).paginate({page: parseInt(page), limit: 2})
+      .sort('createdAt DESC')
+      .done(function(err, users) {
+
+        // Error handling
+        if (err) {
+        return console.log(err);
+
+        // The User was found successfully!
+        } else {
+          console.log("Users found:", numberOfResults);
+          res.view("home/searchresults", {users: users, numberOfResults: numberOfResults, page: page});
+        }
+      });
+    }
     
   },   
    

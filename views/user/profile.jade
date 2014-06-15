@@ -12,14 +12,17 @@ block body
   div
     p Personal information:
     p Username: #{username}
-    p Email: #{email}
+    if myself
+      p Email: #{email}
+    p Sex: #{sex}
     p Age: #{age}
     hr
-  div
-    p Favorite members:
-    hr
-  div
-    p Suggested members:
-    hr
-  div
-    p Saved searches:
+  if myself
+    div
+      p Favorite members:
+      hr
+    div
+      p Suggested members:
+      hr
+    div
+      p Saved searches:
