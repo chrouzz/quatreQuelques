@@ -37,9 +37,10 @@ module.exports.routes = {
   'post /auth/login': 'AuthController.process',
   'get /auth/logout': 'AuthController.logout',
 
-  'get /user/profile': 'UserController.profile',
+  'get /user/profile/:username': 'UserController.profile',
   'get /searchmembers': 'UserController.searchMembers',
-  'post /searchmembers': 'UserController.searchResults',
+  'post /searchmembers/results/page/:page': 'UserController.searchResults',
+  'get /searchmembers/results/page/:page': 'UserController.searchResults',
 };
 
 
