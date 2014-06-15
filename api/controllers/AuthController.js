@@ -29,8 +29,8 @@ module.exports = {
       }
       req.logIn(user, function(err){
         if (err) { res.redirect('auth/login'); }
-        //req.session.userId = req.user.id;
-        console.log("User logged in:", user.username);
+        req.session.userId = user[0].id;
+        console.log("User logged in:", req.session.userId);
         return res.redirect('/');
       });
     })(req, res);

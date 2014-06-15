@@ -1,0 +1,28 @@
+extends ../layout
+
+block styles
+  .style
+
+block body
+
+  label Search members:
+  form(action='/searchmembers', method='post')
+    div
+      label Sex:
+      select(id='sex', name='sex')
+        option(value='Any') Any
+        option(value='Male') Male
+        option(value='Female') Female
+    div
+      label Age:
+      br
+      label Between
+      select(id='age1', name='age1')
+        - for (var age = 18; age < 123; age++)
+          option(value=age) #{age}
+      label and
+      select(id='age2', name='age2')
+        - for (var age = 18; age < 123; age++)
+          option(value=age) #{age}
+    div
+      input(type='submit', value='Search')

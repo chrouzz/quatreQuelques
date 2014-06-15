@@ -38,6 +38,8 @@ module.exports.routes = {
   'get /auth/logout': 'AuthController.logout',
 
   'get /user/profile': 'UserController.profile',
+  'get /searchmembers': 'UserController.searchMembers',
+  'post /searchmembers': 'UserController.searchResults',
 };
 
 

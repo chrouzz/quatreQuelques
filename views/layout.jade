@@ -9,6 +9,13 @@ html
     block styles
 
   body
+    a(href='/signup/create') Sign up
+    a(href='/auth/login') Log in
+    a(href='/user/profile') Profile
+    a(href='/searchmembers') Search members
+    
+    br
+
     block body
 
     // A few key dependencies, linked in order
@@ -21,3 +28,4 @@ html
 
     // listen on socket.io for incoming messages
     script(type="text/javascript", src="/js/app.js")
+

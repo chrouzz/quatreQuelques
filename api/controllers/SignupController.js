@@ -23,9 +23,15 @@ module.exports = {
   process: function(req,res){
     var username = req.param("username");
     var password = req.param("password");
+    var email = req.param("email");
+    var sex = req.param("sex");
+    var age = req.param("age");
     User.create({
     username: username,
     password: password,
+    email: email,
+    sex: sex,
+    age: age
     }).done(function(err, user) {
 
     // Error handling

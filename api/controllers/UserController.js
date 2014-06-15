@@ -25,11 +25,61 @@ module.exports = {
 
       // The User was found successfully!
       } else {
+        username = user.username;
+        email = user.email;
+        age = user.age;
         console.log("User found:", user);
       }
     });
-    res.view("user/profile");
-  },    
+    res.view("user/profile", {username: username, email: email, age: age});
+  },
+  searchMembers: function(req,res){
+    res.view("home/searchmembers");
+  },
+  searchResults: function(req,res){
+    var sex = req.param("sex");
+    var age1 = req.param("age1");
+    var age2 = req.param("age2");
+
+    switch(sex) {
+      case "Any":
+        var sex1 = "Male";
+        var sex2 = "Female";
+        break;
+      case "Male":
+        var sex1 = "Male";
+        var sex2 = "";
+        break;
+      case "Female":
+        var sex1 = "";
+        var sex2 = "Female";
+        break;
+      default:
+        var sex1 = "Male";
+        var sex2 = "Female";
+    }
+
+    User.find({
+      or: [{sex: sex1}, {sex: sex2}],
+      age: {
+        '>=': age1,
+        '<=': age2
+      }
+    }).done(function(err, users) {
+
+      // Error handling
+      if (err) {
+      return console.log(err);
+
+      // The User was found successfully!
+      } else {
+        console.log("Users found:", users);
+        res.view("home/searchresults", {users: users});
+      }
+    });
+    
+  },   
+   
   
 
 
