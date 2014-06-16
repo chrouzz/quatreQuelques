@@ -41,6 +41,8 @@ module.exports.routes = {
   'get /searchmembers': 'UserController.searchMembers',
   'post /searchmembers/results/page/:page': 'UserController.searchResults',
   'get /searchmembers/results/page/:page': 'UserController.searchResults',
+
+  'get /makefavorite/:username': 'UserController.makeFavorite',
 };
 
 

@@ -4,7 +4,10 @@ block styles
   .style
 
 block body
-
+  if !myself
+    div
+      p
+        a(href='/makefavorite/' + username) Make favorite
   div
     p Profile picture:
     p Profile message:

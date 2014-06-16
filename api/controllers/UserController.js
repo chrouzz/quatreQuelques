@@ -182,7 +182,51 @@ module.exports = {
     }
     
   },   
-   
+  makeFavorite: function(req,res){
+    var username = req.param('username');
+    User.findOne({
+      username: username
+    }).done(function(err, user) {
+      FavoriteMember.find({
+        userId: req.session.userId,
+        favoriteMemberId: user.id
+      }).done(function(err, favoriteMembers) {
+
+        if (err) {
+          FavoriteMember.create({
+            userId: req.session.userId,
+            favoriteMemberId: user.id
+          }).done(function(err, favoriteMember) {
+
+            // Error handling
+            if (err || favoriteMembers = []) {
+              return console.log(err);
+            // The User was created successfully!
+            } else {
+              console.log("FavoriteMember created:", favoriteMember);
+            }
+          });
+          return console.log(err);
+        } else {
+          console.log("FavoriteMember already found:", favoriteMembers);
+        }
+      });
+    });
+    /*User.update({
+      id: req.session.userId
+    },{
+      favoriteMembers: favoriteMembers
+    }, function(err, users) {
+      // Error handling
+      if (err) {
+        return console.log(err);
+      // Updated users successfully!
+      } else {
+        console.log("Users updated:", users[0].favoriteMembers);
+      }
+    });*/
+    res.view("home/searchmembers");
+  }, 
   
 
 

@@ -32,6 +32,7 @@ module.exports = {
     },
     favoriteMembers: {
       type: 'array',
+      defaultsTo: ['']
     },
 
     //Override toJSON method to remove password from API
