@@ -7,7 +7,10 @@ block body
   if !myself
     div
       p
-        a(href='/makefavorite/' + username) Make favorite
+        if !isFavorite
+          a(href='/makefavorite/' + username) Make favorite
+        if isFavorite
+          h3 Favorite member!
   div
     p Profile picture:
     p Profile message:
