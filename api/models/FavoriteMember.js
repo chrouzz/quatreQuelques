@@ -15,6 +15,9 @@ module.exports = {
     favoriteMemberId: {
       type: 'integer'
     },
+    favoriteMemberUsername: {
+      type: 'string'
+    },
   	/* e.g.
   	nickname: 'string'
   	*/

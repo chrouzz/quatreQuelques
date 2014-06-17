@@ -29,14 +29,17 @@ module.exports = {
 
         // The User was found successfully!
         } else {
-          
-          var myself = 1;
-          username = user.username;
-          email = user.email;
-          sex = user.sex;
-          age = user.age;
-          console.log("User found:", myself);
-          res.view("user/profile", {myself:myself, username: username, email: email, sex: sex, age: age});
+          FavoriteMember.find({
+            userId: req.session.userId
+          }).done(function(err, favoriteMembers) {
+            var myself = 1;
+            username = user.username;
+            email = user.email;
+            sex = user.sex;
+            age = user.age;
+            console.log("User found:", myself);
+            res.view("user/profile", {myself:myself, username: username, email: email, sex: sex, age: age, favoriteMembers: favoriteMembers});
+          });
         }
       });
     } else {
@@ -208,7 +211,8 @@ module.exports = {
         if (err || Object.keys(favoriteMembers).length == 0) {
           FavoriteMember.create({
             userId: req.session.userId,
-            favoriteMemberId: user.id
+            favoriteMemberId: user.id,
+            favoriteMemberUsername: user.username
           }).done(function(err, favoriteMember) {
 
             // Error handling

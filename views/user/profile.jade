@@ -26,6 +26,8 @@ block body
   if myself
     div
       p Favorite members:
+        for favoriteMember in favoriteMembers
+          h4 #{favoriteMember.favoriteMemberUsername}
       hr
     div
       p Suggested members:
