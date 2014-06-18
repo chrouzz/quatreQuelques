@@ -22,5 +22,9 @@
   "main": "app.js",
   "repository": "",
   "author": "",
-  "license": ""
+  "license": "",
+  "devDependencies": {
+    "mkdirp": "^0.5.0",
+    "shortid": "^2.0.0"
+  }
 }

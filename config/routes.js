@@ -43,6 +43,11 @@ module.exports.routes = {
   'get /searchmembers/results/page/:page': 'UserController.searchResults',
 
   'get /makefavorite/:username': 'UserController.makeFavorite',
+
+  'get /public/images/*': {
+    controller: 'FileController',
+    action: 'get'
+  }
 };
 
 

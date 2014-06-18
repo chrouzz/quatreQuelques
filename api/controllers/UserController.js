@@ -29,6 +29,17 @@ module.exports = {
 
         // The User was found successfully!
         } else {
+          var hasPicture = 0;
+          ProfilePicture.find({
+            userId: req.session.userId
+          }).done(function(err, profilePictures) {
+            if(err || Object.keys(profilePictures).length == 0) {
+              return console.log(err);
+            } else {
+              hasPicture = 1;
+            }
+          
+
           FavoriteMember.find({
             userId: req.session.userId
           }).done(function(err, favoriteMembers) {
@@ -38,7 +49,8 @@ module.exports = {
             sex = user.sex;
             age = user.age;
             console.log("User found:", myself);
-            res.view("user/profile", {myself:myself, username: username, email: email, sex: sex, age: age, favoriteMembers: favoriteMembers});
+            res.view("user/profile", {myself:myself, username: username, email: email, sex: sex, age: age, favoriteMembers: favoriteMembers, hasPicture: hasPicture, profilePictures: profilePictures});
+          });
           });
         }
       });
@@ -65,12 +77,23 @@ module.exports = {
               isFavorite = 1;
             }
           });
+          var hasPicture = 0;
+          ProfilePicture.find({
+            userId: user.id
+          }).done(function(err, profilePictures) {
+            if(err || Object.keys(profilePictures).length == 0) {
+              return console.log(err);
+            } else {
+              hasPicture = 1;
+            }
+          
           var myself = 0;
           username = user.username;
           sex = user.sex;
           age = user.age;
           console.log("User found:", myself);
-          res.view("user/profile", {myself: myself, isFavorite: isFavorite, username: username, sex: sex, age: age});
+          res.view("user/profile", {myself: myself, isFavorite: isFavorite, username: username, sex: sex, age: age, hasPicture: hasPicture, profilePictures: profilePictures});
+        });
         }
       });
     }
