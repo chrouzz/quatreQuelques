@@ -28,7 +28,7 @@
 
 module.exports.routes = {
   '/': {
-    view: 'home/index'
+    controller: 'home'
   },
   'get /signup/create': 'SignupController.create',
   'post /signup/create': 'SignupController.process',
