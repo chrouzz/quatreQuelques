@@ -12,7 +12,14 @@ block body
         if isFavorite
           h3 Favorite member!
   div
+    if myself
+      form(id='uploadForm', enctype='multipart/form-data', action='/upload/upload', method='post')
+        input(type='file', id='userPhotoInput', name='userPhoto')
+        input(type='submit', value='Submit')
     p Profile picture:
+      if hasPicture
+        for profilePicture in profilePictures
+          img(id='' + profilePicture.fileId, src='/' + profilePicture.filePath)
     p Profile message:
     hr
   div
