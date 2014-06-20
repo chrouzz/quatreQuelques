@@ -58,17 +58,15 @@ gulp.task('angularviews', function(){
 gulp.task('watch', function() {
 	// watch scss files
 	gulp.watch('./app/**/*.scss', function() {
-		gulp.run('sass');
+		['sass'];
 	});
 
 	gulp.watch('./app/**/*.js', function() {
-		gulp.run('bowerjs');
-		gulp.run('angularappjs');
-		gulp.run('sailsbasejs');
+		['bowerjs', 'angularappjs', 'sailsbasejs'];
 	});
 
 	gulp.watch('./app/**/*.html', function(){
-		gulp.run('angularviews');
+		['angularviews'];
 	});
 });
 

@@ -4,5 +4,5 @@ barmadden.config(function ($routeProvider) {
     .when('/', {
         templateUrl: '/views/main.html',
         controller: 'mainController'
-    });     
+    });      
 });
