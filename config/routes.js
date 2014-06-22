@@ -29,23 +29,20 @@
 module.exports.routes = {
   '/': {
     controller: 'home'
-  },
-  '/login': {
-    controller: 'login'
-  },
-  'get /signup/create': 'SignupController.create',
-  'post /signup/create': 'SignupController.process',
+  }
+   // 'get /signup/create': 'SignupController.create',
+   // 'post /signup/create': 'SignupController.process',
   
-  'get /auth/login': "AuthController.login",
-  'post /auth/login': 'AuthController.process',
-  'get /auth/logout': 'AuthController.logout',
+  // 'get /auth/login': "AuthController.login",
+  // 'post /auth/login': 'AuthController.process',
+  // 'get /auth/logout': 'AuthController.logout',
 
-  'get /user/profile/:username': 'UserController.profile',
-  'get /searchmembers': 'UserController.searchMembers',
-  'post /searchmembers/results/page/:page': 'UserController.searchResults',
-  'get /searchmembers/results/page/:page': 'UserController.searchResults',
+  // 'get /user/profile/:username': 'UserController.profile',
+  // 'get /searchmembers': 'UserController.searchMembers',
+  // 'post /searchmembers/results/page/:page': 'UserController.searchResults',
+  // 'get /searchmembers/results/page/:page': 'UserController.searchResults',
 
-  'get /makefavorite/:username': 'UserController.makeFavorite',
+  // 'get /makefavorite/:username': 'UserController.makeFavorite',
 };
 
 

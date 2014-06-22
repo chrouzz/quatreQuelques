@@ -10,16 +10,14 @@ html.no-js(ng-app='barmaddenApp')
     meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1")
 
     block styles
-
-    body(ng-controller='mainController')
-    a(href='/signup/create') Sign up
-    a(href='/auth/login') Log in
-    a(href='/user/profile') Profile
-    a(href='/searchmembers') Search members
     
     br
 
-    block body
+    body(ng-app='barmaddenApp')
+      include navbar
+      .container
+        block content
+      include footer
 
     // A few key dependencies, linked in order
 
@@ -34,7 +32,6 @@ html.no-js(ng-app='barmaddenApp')
     script(src='js/sailsmin/sailsbase.min.js')
     script(src='js/bower/bower-vendor.min.js')
     script(src='js/barmadden/barmadden.min.js')
-    script(src='lib/angular/angular.js')
-    script(src='lib/angular/angular-ui.js')
-    script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
-
+    script(src='js/ui-bootstrap.js')
+    script(type='text/javascript', src='http://twitter.github.io/bootstrap/assets/js/bootstrap-dropdown.js')
+    script(src='js/jQuery.min.js')
