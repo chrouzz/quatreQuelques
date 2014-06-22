@@ -32,12 +32,10 @@ module.exports = {
       	res.view("user/sendmessage", {user: user});
         console.log("User found:", user);
       }
-
-      });
     });
     
   
-
+  
 
   /**
    * Overrides for the settings in `config/controllers.js`
@@ -45,5 +43,5 @@ module.exports = {
    */
   _config: {}
 
-  
+  }
 };
