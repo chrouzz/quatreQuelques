@@ -12,6 +12,10 @@ block body
         if isFavorite
           h3 Favorite member!
   div
+    if !myself
+      form(id='sendMessageForm', action='/send/message', method='post')
+        input(type='hidden', id='userId', name='userId')
+        input(type='submit', value='Send message')
     if myself
       form(id='uploadForm', enctype='multipart/form-data', action='/upload/upload', method='post')
         input(type='file', id='userPhotoInput', name='userPhoto')

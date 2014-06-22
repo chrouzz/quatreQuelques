@@ -1,0 +1,26 @@
+extends ../layout
+
+block styles
+  .style
+
+block body
+
+  div
+    p Profile picture:
+      if hasPicture
+        for profilePicture in profilePictures
+          img(id='' + profilePicture.fileId, src='/' + profilePicture.filePath)
+    p Profile message:
+    hr
+  div
+    p Personal information:
+    p Username: #{username}
+    if myself
+      p Email: #{email}
+    p Sex: #{sex}
+    p Age: #{age}
+    hr
+    form(action='/message/sending', method='post')
+      input(type='hidden')
+      input(type='text', id='title', name='title')
+      textarea(id='message', name='message')
