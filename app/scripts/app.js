@@ -12,6 +12,17 @@ barmadden.config(function ($routeProvider) {
         templateUrl: '/views/create.html',
         controller: 'MainCtrl'
 
+    })
+    .when('/profile', {
+        templateUrl: '/views/profile.html'
+
+    })
+    .when('/inbox', {
+        templateUrl: '/views/inbox.html'
+
+    })
+    .when('/login', {
+        templateUrl: '/views/login.html'
     });      
 });
 
