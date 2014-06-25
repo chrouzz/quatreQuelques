@@ -1,5 +1,5 @@
 'use strict';
-var barmadden = angular.module('barmaddenApp', ['ngRoute']);
+var barmadden = angular.module('barmaddenApp', ['ngRoute', 'ngResource']);
 barmadden.config(function ($routeProvider) {
 	console.log($routeProvider);
 	console.log('tooto');
@@ -19,6 +19,11 @@ barmadden.config(function ($routeProvider) {
     })
     .when('/inbox', {
         templateUrl: '/views/inbox.html'
+
+    })
+    .when('/members', {
+        templateUrl: '/views/user.html',
+        controller: 'MembersController'
 
     })
     .when('/login', {
