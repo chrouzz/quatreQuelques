@@ -24,9 +24,11 @@ gulp.task('bowerjs', function() {
 });
 
 gulp.task('sailsbasejs', function(){
-	var sailsbasejs = ['./assets/js/socket.io.js',
+	var sailsbasejs = [
+	    './assets/js/socket.io.js',
 		'./assets/js/sails.io.js',
-		'./assets/js/app.js'];
+		'./assets/js/app.js'
+		];
 
 	gulp.src(sailsbasejs, {base:'assets/js/'}).pipe(concat('sailsbase.min.js')).pipe(gulp.dest('./assets/js/sailsmin/')).pipe(notify({
 		message:"Sails Base JS are now processed!"
