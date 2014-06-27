@@ -1,8 +1,7 @@
-<form name="signupForm" ng-controller="SignupController as signupCtrl"
-						ng-submit="signupCtrl.save()">
+<form name="signupForm" ng-submit="save()">
 	<label>Username:</label>
-	<input type="text" name="username"/>
+	<input type="text" ng-model="user.username" name="username"/>
 	<label>Password:</label>
-	<input type="password" name="password"/>
+	<input type="password" ng-model="user.password" name="password"/>
 	<input type="submit" value="Submit"/>
 </form>

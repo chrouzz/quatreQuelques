@@ -2,7 +2,7 @@ angular.module('barmaddenApp').controller('SignupController', function ($scope, 
   console.log("je rentre dans le signupController");
   $scope.message = "Signup";
   this.signup = {};
-  var User = $resource('/api/User');
+  var User = $resource('/user');
   $scope.user = new User({});
   $scope.save = function() {
   	$scope.user.$save(function () {
