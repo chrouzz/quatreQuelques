@@ -22,16 +22,18 @@ module.exports = {
   },
 
   process: function(req,res){
+    console.log('process controller api');
     passport.authenticate('local', function(err, user, info){
       if ((err) || (!user)) {
-        res.redirect('auth/login');
-        return;
+        return res.send({ code: 0, status: "loggin failed"});
       }
       req.logIn(user, function(err){
-        if (err) { res.redirect('auth/login'); }
+        if (err) { 
+          return res.send({ status: "loggin failed"}); 
+        }
         req.session.userId = user[0].id;
         console.log("User logged in:", req.session.userId);
-        return res.redirect('/');
+        return res.send({ code: 1, status: "logged"});
       });
     })(req, res);
   },

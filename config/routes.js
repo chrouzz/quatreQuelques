@@ -29,12 +29,12 @@
 module.exports.routes = {
   '/': {
     controller: 'home'
-  }
+  },
    // 'get /signup/create': 'SignupController.create',
    // 'post /signup/create': 'SignupController.process',
   
   // 'get /auth/login': "AuthController.login",
-  // 'post /auth/login': 'AuthController.process',
+  'get /auth/login': 'AuthController.process'
   // 'get /auth/logout': 'AuthController.logout',
 
   // 'get /user/profile/:username': 'UserController.profile',

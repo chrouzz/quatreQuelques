@@ -1,44 +1,7 @@
-<div class="container" ng-controller="MainCtrl">
-    <div class="panel-group">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">Login form</h4>
-            </div>
-            <div class="panel-body">
-                <ng-include src="'form.html'"></ng-include>
-            </div>
-        </div>
-    </div>
-
-    <!-- kept seperate from the bootstrap markup to keep this example clean -->
-    <script type="text/ng-template" id="form.html">
-        <form name="form" valid-submit="sendForm()" novalidate>
-            <!-- call name-->
-            <div class="form-group clearfix" ng-class="{
-                    'has-error': form.$submitted && form.callName.$invalid,
-                    'has-success': form.$submitted && form.callName.$valid}">
-                <label class="col-sm-2 control-label" for="callName">Call Name</label>
-                <div class="col-sm-5">
-                    <input id="callName" name="callName" class="form-control" type="text" ng-model="person.callName" required autofocus></input>
-                    <div class="alert alert-danger" ng-show="form.$submitted && form.callName.$error.required">Call name is required</div>
-                    <p class="help-block">What do your parents and friends call you?</p>
-                </div>
-            </div>
-            <!-- last name-->
-            <div class="form-group clearfix" ng-class="{
-                    'has-error': form.$submitted && form.lastName.$invalid,
-                    'has-success': form.$submitted && form.lastName.$valid}">
-                <label class="col-sm-2 control-label" for="lastName">Last Name</label>
-                <div class="col-sm-5">
-                    <input id="lastName" name="lastName" class="form-control" type="text" ng-model="person.lastName" required></input>
-                    <div class="alert alert-danger" ng-show="form.$submitted && form.lastName.$error.required">required</div>
-                    <p class="help-block">Last name as it is written on your passport</p>
-                </div>
-            </div>
-            <!-- form controls-->
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary" ng-disabled="(form.$submitted && form.$invalid)">Submit!</button>
-            </div>
-        </form>
-    </script>
-</div>
+<form name="signupForm" ng-submit="getCredentials()">
+    <label>Username:</label>
+    <input type="text" ng-model="user.username" name="username"/>
+    <label>Password:</label>
+    <input type="password" ng-model="user.password" name="password"/>
+    <input type="submit" value="Submit"/>
+</form>
