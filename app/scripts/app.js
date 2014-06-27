@@ -13,8 +13,9 @@ barmadden.config(function ($routeProvider) {
         controller: 'MainCtrl'
 
     })
-    .when('/profile', {
-        templateUrl: '/views/profile.html'
+    .when('/profile/:id', {
+        templateUrl: '/views/profile.html',
+        controller: 'MemberController'
 
     })
     .when('/inbox', {
