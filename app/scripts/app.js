@@ -9,8 +9,8 @@ barmadden.config(function ($routeProvider) {
         controller: 'mainController'
     })
     .when('/signup', {
-        templateUrl: '/views/create.html',
-        controller: 'MainCtrl'
+        templateUrl: '/views/signup.html',
+        controller: 'SignupController'
 
     })
     .when('/profile', {
