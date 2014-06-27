@@ -20,19 +20,19 @@ module.exports = {
     },
     email: {
       type: 'string',
-      required: true
+      //required: true
     },
     sex: {
       type: 'string',
-      required: true
+      //required: true
     },
     age: {
       type: 'integer',
-      required: true
+      //required: true
     },
     favoriteMembers: {
       type: 'array',
-      defaultsTo: ['']
+      //defaultsTo: ['']
     },
 
     //Override toJSON method to remove password from API
