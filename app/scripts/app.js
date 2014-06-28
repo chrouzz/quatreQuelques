@@ -1,5 +1,5 @@
 'use strict';
-var barmadden = angular.module('barmaddenApp', ['ngRoute', 'ngResource']);
+var barmadden = angular.module('barmaddenApp', ['ngRoute', 'ngResource', 'ngCookies']);
 barmadden.config(function ($routeProvider) {
     $routeProvider
     .when('/', {
@@ -28,7 +28,8 @@ barmadden.config(function ($routeProvider) {
     .when('/login', {
         templateUrl: '/views/login.html',
         controller: 'LoginController'
-    });      
+    })
+    .otherwise({ redirectTo: '/' });      
 });
 
 // directive that prevents submit if there are still form errors
