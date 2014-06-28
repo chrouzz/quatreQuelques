@@ -17,23 +17,19 @@
 
 var passport = require("passport");
 module.exports = {
-  login: function(req,res){
-    res.view("auth/login");
-  },
+
 
   process: function(req,res){
-    console.log('process controller api');
     passport.authenticate('local', function(err, user, info){
       if ((err) || (!user)) {
-        return res.send({ code: 0, status: "loggin failed"});
+        return res.send({ code: 0, status: "loggin failed" });
       }
       req.logIn(user, function(err){
         if (err) { 
-          return res.send({ status: "loggin failed"}); 
+          return res.send({ code: 0, status: "loggin failed" }); 
         }
         req.session.userId = user[0].id;
-        console.log("User logged in:", req.session.userId);
-        return res.send({ code: 1, status: "logged"});
+        return res.send({ code: 1, status: "logged", id: user[0].id });
       });
     })(req, res);
   },

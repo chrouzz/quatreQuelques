@@ -13,7 +13,6 @@ angular.module('barmaddenApp').controller('MemberController', function ($scope, 
   $scope.member = {};
   var Members = $resource('/user/:id');
   $scope.member  = Members.get( { id: $routeParams.id } , function () {
-    console.log('found');
   });
 
   $scope.message = "Members";

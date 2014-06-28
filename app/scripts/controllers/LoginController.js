@@ -1,20 +1,15 @@
-angular.module('barmaddenApp').controller('LoginController', function ($scope, $resource) {
+angular.module('barmaddenApp').controller('LoginController', function ($scope, $resource, $location) {
   
   this.user = {};
 
+  $scope.login = function () {
 
-  $scope.getCredentials = function () {
-
-    console.log(this.user.username);
     var credentials = $resource('/auth/login',this.user);
     var isLogged = credentials.get(function () { 
       if(isLogged.code === 1)
-        console.log('We are logged');
+        $location.path('/profile/' + isLogged.id)
       else
-        console.log('Error in loggin');
+        $location.path('/login/')
     });
-  };
-  $scope.login = function (credentials) {
-    console.log("   ");
   };
 });
