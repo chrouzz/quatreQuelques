@@ -1,8 +1,6 @@
 'use strict';
 var barmadden = angular.module('barmaddenApp', ['ngRoute', 'ngResource']);
 barmadden.config(function ($routeProvider) {
-	console.log($routeProvider);
-	console.log('tooto');
     $routeProvider
     .when('/', {
         templateUrl: '/views/main.html',
