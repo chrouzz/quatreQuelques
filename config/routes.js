@@ -34,11 +34,11 @@ module.exports.routes = {
    // 'post /signup/create': 'SignupController.process',
   
   // 'get /auth/login': "AuthController.login",
-  'get /auth/login': 'AuthController.process'
+  'get /auth/login': 'AuthController.process',
   // 'get /auth/logout': 'AuthController.logout',
 
   // 'get /user/profile/:username': 'UserController.profile',
-  // 'get /searchmembers': 'UserController.searchMembers',
+  'get /searchmembers': 'UserController.searchMembers',
   // 'post /searchmembers/results/page/:page': 'UserController.searchResults',
   // 'get /searchmembers/results/page/:page': 'UserController.searchResults',
 

@@ -1,0 +1,18 @@
+<form name="messageForm" ng-submit="searchMembers()">
+	<label>Username:</label>
+	<input type="text" ng-model="searchResult.username" name="username"/>
+	<label>Aged between:</label>
+	<select ng-model="searchResult.age1" name="age1">
+		<option value="18">18</option>
+	</select>
+	<label>and:</label>
+	<select ng-model="searchResult.age2" name="age2">
+		<option value="30">30</option>
+	</select>
+	<label>Sort by:</label>
+	<select ng-model="searchResult.sortBy" name="sortBy">
+		<option value="newestmembers">Newest members</option>
+		<option value="age">Age</option>
+	</select>
+	<input type="submit" value="Submit"/>
+</form>

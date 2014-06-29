@@ -33,6 +33,10 @@ barmadden.config(function ($routeProvider) {
         templateUrl: '/views/message.html',
         controller: 'MessageController'
     })
+    .when('/searchmembers', {
+        templateUrl: '/views/searchmembers.html',
+        controller: 'SearchMembersController'
+    })
     .otherwise({ redirectTo: '/' });      
 });
 

@@ -98,10 +98,18 @@ module.exports = {
       });
     }
   },
-  searchMembers: function(req,res){
-    res.view("home/searchmembers");
+  searchMembers: function(req, res){
+    User.find({
+        username: req.param('username')
+    }).done(function(err, users) {
+      if(err) {
+        return console.log('asdfasdfa');
+      } else {
+        return res.send({username: users[0].username});
+      }
+    });
   },
-  searchResults: function(req,res){
+  searchResults: function(req, res){
     var sex = req.param("sex");
     var age1 = req.param("age1");
     var age2 = req.param("age2");
