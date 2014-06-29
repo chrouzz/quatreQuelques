@@ -29,6 +29,10 @@ barmadden.config(function ($routeProvider) {
         templateUrl: '/views/login.html',
         controller: 'LoginController'
     })
+    .when('/message', {
+        templateUrl: '/views/message.html',
+        controller: 'MessageController'
+    })
     .otherwise({ redirectTo: '/' });      
 });
 
