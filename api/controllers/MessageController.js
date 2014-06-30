@@ -33,6 +33,66 @@ module.exports = {
         console.log("User found:", user);
       }
     });
+  },
+
+  loadMessageTitles: function(req,res){
+    var userId = req.param('userId');
+    var boxType = req.param('boxType');
+    if(boxType.indexOf('inbox') != -1) {
+      Message.find({
+        receiverId: userId
+      }).sort('createdAt DESC')
+      .done(function(err, messages) {
+      
+
+        // Error handling
+        if (err) {
+          return console.log(err);
+        // The User was created successfully!
+        } else {
+          return res.send(messages);
+        }
+      });
+    } else if(boxType.indexOf('sent') != -1) {
+      Message.find({
+        senderId: userId
+      }).sort('createdAt DESC')
+      .done(function(err, messages) {
+      
+
+        // Error handling
+        if (err) {
+          return console.log(err);
+        // The User was created successfully!
+        } else {
+          return res.send(messages);
+        }
+      });
+    }
+    
+  },
+
+  loadConversation: function(req,res){
+    var userId = req.param('userId');
+    var contactId = req.param('contactId');
+    
+    Message.find({
+      or: [{senderId: userId, receiverId: contactId},
+           {senderId: contactId, receiverId: userId}]
+    }).sort('createdAt DESC')
+    .done(function(err, messages) {
+    
+
+      // Error handling
+      if (err) {
+        return console.log(err);
+      // The User was created successfully!
+      } else {
+        return res.send(messages);
+      }
+    });
+    
+  },
     
   
   
@@ -43,5 +103,4 @@ module.exports = {
    */
   _config: {}
 
-  }
 };

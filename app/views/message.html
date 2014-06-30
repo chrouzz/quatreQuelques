@@ -1,4 +1,11 @@
 <form name="messageForm" ng-submit="send()">
+	<label>Send to userId (just pour test):</label>
+	<select ng-model="message.receiverId" name="receiverId">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+	</select>
 	<label>Title:</label>
 	<input type="text" ng-model="message.title" name="title"/>
 	<label>Message:</label>

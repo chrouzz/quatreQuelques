@@ -9,6 +9,7 @@ angular.module('barmaddenApp').controller('MessageController', function ($scope,
 
     var title = this.message.title;
     var message = this.message.message;
+    var receiverId = this.message.receiverId;
     console.log(title);
     console.log(message);
 
@@ -25,7 +26,7 @@ angular.module('barmaddenApp').controller('MessageController', function ($scope,
       var Message = $resource('/message');
       $scope.message = new Message({});
       $scope.message.senderId = $cookieStore.get('id');
-      $scope.message.receiverId = 1000;
+      $scope.message.receiverId = receiverId;
       $scope.message.title = title;
       $scope.message.message = message;
       console.log($scope.message);
