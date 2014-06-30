@@ -32,6 +32,12 @@
 	<div ng-show="messages.conversationOpened">
 		<h3>Conversation</h3>
 		</hr>
+		<form name="messagesForm" ng-submit="send(messages.conversation.contactId)">
+			<label>Message:</label>
+			<textarea ng-model="message.message" name="message"></textarea>
+			<input type="submit" value="Send"/>
+		</form>
+		</hr>
 		<ul>
 			<li ng-repeat="storedMessage in messages.storedConversation"><h5>{{ storedMessage.title }}</h5><p><i>Sent on: {{ storedMessage.createdAt }}</i></p><p>{{ storedMessage.message }}</p></li>
 		</ul>

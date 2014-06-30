@@ -27,6 +27,8 @@ angular.module('barmaddenApp').controller('MessagesController', function ($scope
     
   };
 
+  this.conversation = {};
+
   this.loadConversation = function (contactId) {
     this.conversationOpened = 1;
     this.conversation = {userId: $cookieStore.get('id'),
@@ -38,9 +40,12 @@ angular.module('barmaddenApp').controller('MessagesController', function ($scope
     
   };
 
-  /*$scope.send = function (message) {
+  this.message = {};
+  //$scope.message.title = "Re:";
 
-    var title = this.message.title;
+  $scope.send = function (contactId) {
+
+    var title = "Re:";
     var message = this.message.message;
     console.log(title);
     console.log(message);
@@ -49,16 +54,12 @@ angular.module('barmaddenApp').controller('MessagesController', function ($scope
       
       $location.path('/login/');
     
-    //} else if ($cookieStore.get('id').toString().indexOf($routeParams.id) === -1 ) {
-      
-    //  $location.path('/login/');
-    
     } else {
 
       var Message = $resource('/message');
       $scope.message = new Message({});
       $scope.message.senderId = $cookieStore.get('id');
-      $scope.message.receiverId = 1000;
+      $scope.message.receiverId = contactId;
       $scope.message.title = title;
       $scope.message.message = message;
       console.log($scope.message);
@@ -68,6 +69,6 @@ angular.module('barmaddenApp').controller('MessagesController', function ($scope
 
     }
 
-  };*/
+  };
 
 });
