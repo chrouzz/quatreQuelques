@@ -1,0 +1,45 @@
+<head>
+<style type="text/css">
+
+.active
+{
+	color: red;
+}
+
+</style>
+</head>
+
+<section ng-controller="MessagesController as messages">
+	<ul>
+		<li ng-class="{ active: messages.isSelected(1) }"><a href ng-click="messages.selectTab(1); messages.loadMessageTitles('inbox')">Inbox</a></li>
+		<li ng-class="{ active: messages.isSelected(2) }"><a href ng-click="messages.selectTab(2); messages.loadMessageTitles('sent')">Sent</a></li>
+	</ul>
+	<div ng-show="messages.isSelected(1)">
+		<h3>Inbox</h3>
+		</hr>
+		<ul>
+			<li ng-repeat="storedMessage in messages.storedMessages"><a href ng-click="messages.loadConversation(storedMessage.senderId)">{{ storedMessage.title }}</a><p><i>Received on: {{ storedMessage.createdAt }}</i></p></li>
+		</ul>
+	</div>
+	<div ng-show="messages.isSelected(2)">
+		<h3>Sent</h3>
+		</hr>
+		<ul>
+			<li ng-repeat="storedMessage in messages.storedMessages"><a href ng-click="messages.loadConversation(storedMessage.receiverId)">{{ storedMessage.title }}</a><p><i>Sent on: {{ storedMessage.createdAt }}</i></p></li>
+		</ul>
+	</div>
+	</hr>
+	<div ng-show="messages.conversationOpened">
+		<h3>Conversation</h3>
+		</hr>
+		<form name="messagesForm" ng-submit="send(messages.conversation.contactId)">
+			<label>Message:</label>
+			<textarea ng-model="message.message" name="message"></textarea>
+			<input type="submit" value="Send"/>
+		</form>
+		</hr>
+		<ul>
+			<li ng-repeat="storedMessage in messages.storedConversation"><h5>{{ storedMessage.title }}</h5><p><i>Sent on: {{ storedMessage.createdAt }}</i></p><p>{{ storedMessage.message }}</p></li>
+		</ul>
+	</div>
+</section>

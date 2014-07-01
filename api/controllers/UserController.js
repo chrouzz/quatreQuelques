@@ -103,7 +103,7 @@ module.exports = {
         username: req.param('username')
     }).done(function(err, users) {
       if(err) {
-        return console.log('asdfasdfa');
+        return console.log('Error');
       } else {
         return res.send({username: users[0].username});
       }
