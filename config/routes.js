@@ -41,6 +41,8 @@ module.exports.routes = {
   'get /searchmembers': 'UserController.searchMembers',
   'get /messages': 'MessageController.loadMessageTitles',
   'get /messages/conversation': 'MessageController.loadConversation',
+  'get /articles': 'ArticlesController.loadArticleTitles',
+  'get /article/view': 'ArticlesController.loadArticle',
   // 'post /searchmembers/results/page/:page': 'UserController.searchResults',
   // 'get /searchmembers/results/page/:page': 'UserController.searchResults',
 
