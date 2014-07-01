@@ -9,40 +9,42 @@
 </style>
 </head>
 
-<section ng-controller="ArticlesController as articles">
-	<ul>
+<section class="tabbable" ng-controller="ArticlesController as articles">
+	<ul class="nav nav-tabs">
 		<li ng-class="{ active: articles.isSelected(1) }"><a href ng-click="articles.selectTab(1); articles.loadArticleTitles('tourism')">Tourism</a></li>
 		<li ng-class="{ active: articles.isSelected(2) }"><a href ng-click="articles.selectTab(2); articles.loadArticleTitles('kpop')">K-pop</a></li>
 		<li ng-class="{ active: articles.isSelected(3) }"><a href ng-click="articles.selectTab(3); articles.loadArticleTitles('drama')">Drama</a></li>
 		<li ng-class="{ active: articles.isSelected(4) }"><a href ng-click="articles.selectTab(4); articles.loadArticleTitles('surgery')">Surgery</a></li>
 	</ul>
-	<div ng-show="articles.isSelected(1)">
-		<h3>Tourism</h3>
-		</hr>
-		<ul>
-			<li ng-repeat="storedArticle in articles.storedArticles"><a href ng-click="articles.loadArticle(article.Id)">{{ article.title }}</a></li>
-		</ul>
-	</div>
-	<div ng-show="articles.isSelected(2)">
-		<h3>K-pop</h3>
-		</hr>
-		<ul>
-			<li ng-repeat="storedArticle in articles.storedArticles"><a href ng-click="articles.loadArticle(article.Id)">{{ article.title }}</a></li>
-		</ul>
-	</div>
-	<div ng-show="articles.isSelected(3)">
-		<h3>Drama</h3>
-		</hr>
-		<ul>
-			<li ng-repeat="storedArticle in articles.storedArticles"><a href ng-click="articles.loadArticle(article.Id)">{{ article.title }}</a></li>
-		</ul>
-	</div>
-	<div ng-show="articles.isSelected(4)">
-		<h3>Surgery</h3>
-		</hr>
-		<ul>
-			<li ng-repeat="article in articles.articles"><a href ng-click="articles.loadArticle(article.Id)">{{ article.title }}</a></li>
-		</ul>
-	</div>
+	
+		<div class="tab-pane" ng-show="articles.isSelected(1)">
+			<h3>Tourism</h3>
+			</hr>
+			<ul>
+				<li ng-repeat="storedArticle in articles.storedArticles"><a href ng-click="articles.loadArticle(storedArticle.Id)"><i>{{ storedArticle.title }}</i></a></li>
+			</ul>
+		</div>
+		<div class="tab-pane" ng-show="articles.isSelected(2)">
+			<h3>K-pop</h3>
+			</hr>
+			<ul>
+				<li ng-repeat="storedArticle in articles.storedArticles"><a href ng-click="articles.loadArticle(storedArticle.Id)"><i>{{ storedArticle.title }}</i></a></li>
+			</ul>
+		</div>
+		<div class="tab-pane" ng-show="articles.isSelected(3)">
+			<h3>Drama</h3>
+			</hr>
+			<ul>
+				<li ng-repeat="storedArticle in articles.storedArticles"><a href ng-click="articles.loadArticle(storedArticle.Id)"><i>{{ storedArticle.title }}</i></a></li>
+			</ul>
+		</div>
+		<div class="tab-pane" ng-show="articles.isSelected(4)">
+			<h3>Surgery</h3>
+			</hr>
+			<ul>
+				<li ng-repeat="article in articles.articles"><a href ng-click="articles.loadArticle(storedArticle.Id)"><i>{{ storedArticle.title }}</i></a></li>
+			</ul>
+		</div>
+
 </section>
 

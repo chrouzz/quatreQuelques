@@ -30,7 +30,10 @@ module.exports = {
         return console.log(err);
       // The User was created successfully!
       } else {
-        articles = [{category: 'tourism', title: 'Des prouts partout'}];
+        articles = [{category: 'tourism', title: 'Des prouts partout'}, 
+        {category: 'tourism', title: 'Avalanche de merde au pays des mouches, les habitants furieux.'},
+        {category: 'kpop', title: 'P. Katerin en concert'},
+        {category: 'surgery', title: 'Toujours plus moche avec un coup de rabot'}];
         return res.send(articles);
       }
     });
