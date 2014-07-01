@@ -1,7 +1,7 @@
 var jwt = require('jsonwebtoken');
 
 module.exports.issueToken = function(payload) {
-  var token = jwt.sign(payload, process.env.TOKEN_SECRET || "seccret key");
+  var token = jwt.sign(payload, process.env.TOKEN_SECRET || "secret key");
   return token;
 };
 
