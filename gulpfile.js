@@ -37,7 +37,8 @@ gulp.task('sailsbasejs', function(){
 
 gulp.task('angularappjs', function(){
 	var angularjsapp = ['./app/scripts/app.js',
-		'./app/scripts/models/*.js',
+		'./app/scripts/models/*.js',		
+		'./app/scripts/angular/**/*.js',
 		'./app/scripts/controllers/*.js']
 
 	gulp.src(angularjsapp, {base:'app/scripts/'}).pipe(concat('barmadden.min.js')).pipe(gulp.dest('./assets/js/barmadden/')).pipe(notify({

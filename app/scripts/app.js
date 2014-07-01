@@ -1,43 +1,75 @@
 'use strict';
-var barmadden = angular.module('barmaddenApp', ['ngRoute', 'ngResource', 'ngCookies']);
-barmadden.config(function ($routeProvider) {
-    $routeProvider
-    .when('/', {
-        templateUrl: '/views/main.html',
-        controller: 'mainController'
+var barmadden = angular.module('barmaddenApp', ['ngRoute', 'ngResource', 'ngCookies', 'ui.router']);
+
+
+barmadden.run(function($rootScope, $state, Auth) {
+  $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+    if (!Auth.authorize(toState.data.access)) {
+      event.preventDefault();
+
+      $state.go('anon.login');
+    }
+  });
+});
+
+barmadden.config(function ($stateProvider, $urlRouterProvider, AccessLevels) {
+    $urlRouterProvider.otherwise('/');
+
+
+    $stateProvider
+    .state('anon', {
+      abstract: true,
+      template: '<ui-view/>',
+      data: {
+        access: AccessLevels.anon
+      }
     })
-    .when('/signup', {
+    .state('anon.signup', {
+        url: '/signup',
         templateUrl: '/views/signup.html',
         controller: 'SignupController'
 
     })
-    .when('/profile/:id', {
+    .state('anon.login', {
+        url: '/login',
+        templateUrl: '/views/login.html',
+        controller: 'LoginController'
+    });
+    $stateProvider
+    .state('user', {
+        abstract: true,
+        template: '<ui-view/>',
+        data: {
+          access: AccessLevels.user
+        }
+      })
+    .state('user.profile', {
+        url: '/profile/:id', 
         templateUrl: '/views/profile.html',
         controller: 'MemberController'
 
     })
-    .when('/inbox', {
+    .state('user.inbox', {
+        url: '/inbox',
         templateUrl: '/views/inbox.html'
 
     })
-    .when('/members', {
+    .state('user.members', {
+        url: '/members',
         templateUrl: '/views/user.html',
         controller: 'MembersController'
 
     })
-    .when('/login', {
-        templateUrl: '/views/login.html',
-        controller: 'LoginController'
-    })
-    .when('/message', {
+    .state('user.message', {
+        url: '/message', 
         templateUrl: '/views/message.html',
         controller: 'MessageController'
     })
-    .when('/searchmembers', {
+    .state('user.searchmembers', {
+        url: '/searchmembers', 
         templateUrl: '/views/searchmembers.html',
         controller: 'SearchMembersController'
     })
-    .otherwise({ redirectTo: '/' });      
 });
 
 // directive that prevents submit if there are still form errors
@@ -75,3 +107,5 @@ barmadden.controller('MainCtrl', function($scope) {
     alert('form valid, sending request...');
   };
 });
+
+

@@ -16,20 +16,22 @@
  */
 
 var passport = require("passport");
+var sailsTokenAuth = require("../services/jwt");
+
 module.exports = {
 
 
   process: function(req,res){
     passport.authenticate('local', function(err, user, info){
       if ((err) || (!user)) {
-        return res.send({ code: 0, status: "loggin failed" });
+        return res.json(401, {err: 'email and password required'});
       }
       req.logIn(user, function(err){
         if (err) { 
-          return res.send({ code: 0, status: "loggin failed" }); 
+          return res.json(401, {err: 'invalid email or password'});
         }
         req.session.userId = user[0].id;
-        return res.send({ code: 1, status: "logged", id: user[0].id });
+        return res.json({user: user, token: sailsTokenAuth.issueToken(user[0].id)});
       });
     })(req, res);
   },
@@ -39,4 +41,5 @@ module.exports = {
     res.send('logout successful');
   },
   _config: {}
+
 };

@@ -1,25 +1,13 @@
-angular.module('barmaddenApp').controller('LoginController', function ($scope, $resource, $location, $cookieStore) {
-  
-  this.user = {};
+barmadden
+  .controller('LoginController', function($scope, $state, Auth) {
+    $scope.errors = [];
 
-  $scope.login = function () {
-
-    var credentials = $resource('/auth/login',this.user);
-    var isLogged = credentials.get(function () { 
-      if(isLogged.code === 1) {
-        $cookieStore.put('login', 1);
-        $cookieStore.put('id', isLogged.id);
-        $location.path('/profile/' + isLogged.id)
-      }
-      else {
-        $cookieStore.put('login', 0);
-        $location.path('/login/')
-      }
-    });
-  };
-
-  $scope.logout = function () {
-    $cookieStore.remove('login');
-    $cookieStore.remove('id');
-  };
-});
+    $scope.login = function() {
+      $scope.errors = [];
+      Auth.login($scope.user).success(function(result) {
+        $state.go('user.messages');
+      }).error(function(err) {
+        $scope.errors.push(err);
+      });
+    }
+  });

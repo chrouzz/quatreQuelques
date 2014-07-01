@@ -34,7 +34,7 @@ module.exports.routes = {
    // 'post /signup/create': 'SignupController.process',
   
   // 'get /auth/login': "AuthController.login",
-  'get /auth/login': 'AuthController.process',
+  'post /auth/login': 'AuthController.process',
   // 'get /auth/logout': 'AuthController.logout',
 
   // 'get /user/profile/:username': 'UserController.profile',
