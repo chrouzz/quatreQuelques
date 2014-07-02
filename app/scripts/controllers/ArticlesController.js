@@ -27,6 +27,14 @@ angular.module('barmaddenApp').controller('ArticlesController', function ($scope
     
   };
 
+  $scope.title = 'initial';
+  $scope.summary = 'initial';
+
+  this.changeSummary = function (title, summary) {
+    $scope.title = title;
+    $scope.summary = summary;
+  };
+
   this.article = {};
 
   this.loadArticle = function (articleId) {

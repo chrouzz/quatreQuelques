@@ -14,7 +14,7 @@
 </style>
 </head>
 
-<section class="tabbable" ng-controller="ArticlesController as articles" ng-init="summary = 0">
+<section class="tabbable" ng-controller="ArticlesController as articles">
 	<ul class="nav nav-tabs">
 		<li ng-class="{ active: articles.isSelected(1) }"><a href ng-click="articles.selectTab(1); articles.loadArticleTitles('tourism')">Tourism</a></li>
 		<li ng-class="{ active: articles.isSelected(2) }"><a href ng-click="articles.selectTab(2); articles.loadArticleTitles('kpop')">K-pop</a></li>
@@ -23,13 +23,13 @@
 	</ul>
 	
 		<div class="tab-pane" ng-show="articles.isSelected(1)">
-			<h3>Tourism</h3>
-			</hr>
-			<!--
-			<ul>
+			
+
+			
+			<!--<ul>
 				<li ng-repeat="storedArticle in articles.storedArticles"><a href ng-click="articles.loadArticle(storedArticle.Id)"><i>{{ storedArticle.title }}</i></a></li>
 			</ul>-->
-			<div class="container">
+	        <div class="container">
     <div class="col-md-12">
         <div class="well">
             <div id="myCarousel1" class="carousel slide">
@@ -38,7 +38,7 @@
                 <div class="carousel-inner">
                     <div class="item active">
                         <div class="row">
-                            <div ng-repeat="storedArticle in articles.storedArticles" class="col-sm-3"><a href="#x"><img src="http://upload.wikimedia.org/wikipedia/commons/d/d9/Anthomyiidae_sp._1_(aka).jpg" alt="Image" class="img-responsive"></a>
+                            <div ng-repeat="storedArticle in articles.storedArticles" class="col-sm-3" ng-mouseover="articles.changeSummary(storedArticle.title, storedArticle.summary)"><a href="#x"><img ng-src="{{storedArticle.thumbUrl}}" alt="Image" class="img-responsive"></a>
                             </div>
                             
                         </div>
@@ -47,7 +47,7 @@
                     <!--/item-->
                     <div class="item">
                         <div class="row">
-                           <div ng-repeat="storedArticle in articles.storedArticles" class="col-sm-3"><a href="#x"><img src="http://upload.wikimedia.org/wikipedia/commons/d/d9/Anthomyiidae_sp._1_(aka).jpg" alt="Image" class="img-responsive"></a>
+                           <div ng-repeat="storedArticle in articles.storedArticles" class="col-sm-3" ng-mouseover="articles.changeSummary(storedArticle.title, storedArticle.summary)"><a href="#x"><img ng-src="{{storedArticle.thumbUrl}}" alt="Image" class="img-responsive"></a>
                             </div>
                         </div>
                         <!--/row-->
@@ -55,7 +55,16 @@
                     <!--/item-->
                     <div class="item">
                         <div class="row">
-                            <div ng-repeat="storedArticle in articles.storedArticles" class="col-sm-3"><a href="#x"><img src="http://upload.wikimedia.org/wikipedia/commons/d/d9/Anthomyiidae_sp._1_(aka).jpg" alt="Image" class="img-responsive"></a>
+                            <div ng-repeat="storedArticle in articles.storedArticles" class="col-sm-3" ng-mouseover="articles.changeSummary(storedArticle.title, storedArticle.summary)"><a href="#x"><img ng-src="{{storedArticle.thumbUrl}}" alt="Image" class="img-responsive"></a>
+                            </div>
+                        </div>
+                        <!--/row-->
+                    </div>
+                    <!--/item-->
+                    <!--/item-->
+                    <div class="item">
+                        <div class="row">
+                            <div ng-repeat="storedArticle in articles.storedArticles" class="col-sm-3" ng-mouseover="articles.changeSummary(storedArticle.title, storedArticle.summary)"><a href="#x"><img ng-src="{{storedArticle.thumbUrl}}" alt="Image" class="img-responsive"></a>
                             </div>
                         </div>
                         <!--/row-->
@@ -70,74 +79,28 @@
         </div>
         <!--/well-->
     </div>
-</div>
+</div>   
 		</div>
 		<div class="tab-pane" ng-show="articles.isSelected(2)">
-			<h3>K-pop</h3>
-			</hr>
-			<!--<ul>
-				<li ng-repeat="storedArticle in articles.storedArticles"><a href ng-click="articles.loadArticle(storedArticle.Id)"><i>{{ storedArticle.title }}</i></a></li>
-			</ul>-->
-
-			<div class="container">
-    <div class="col-md-12">
-        <div class="well">
-            <div id="myCarousel2" class="carousel slide">
-                
-                <!-- Carousel items -->
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <div class="row">
-                            <div ng-repeat="storedArticle in articles.storedArticles" class="col-sm-3"><div ng-mouseover="summary = summary + 1"><a href="#x" ng-click="summary = summary + 1"><img src="http://upload.wikimedia.org/wikipedia/commons/d/d9/Anthomyiidae_sp._1_(aka).jpg" alt="Image" class="img-responsive"></a></div>
-                            </div>
-                            
-                        </div>
-                        <!--/row-->
-                    </div>
-                    <!--/item-->
-                    <div class="item">
-                        <div class="row">
-                            <div ng-repeat="storedArticle in articles.storedArticles" class="col-sm-3"><a href="#x"><img src="http://upload.wikimedia.org/wikipedia/commons/d/d9/Anthomyiidae_sp._1_(aka).jpg" alt="Image" class="img-responsive"></a>
-                            </div>
-                        </div>
-                        <!--/row-->
-                    </div>
-                    <!--/item-->
-                    <div class="item">
-                        <div class="row">
-                            <div ng-repeat="storedArticle in articles.storedArticles" class="col-sm-3"><a href="#x"><img src="http://upload.wikimedia.org/wikipedia/commons/d/d9/Anthomyiidae_sp._1_(aka).jpg" alt="Image" class="img-responsive"></a>
-                            </div>
-                        </div>
-                        <!--/row-->
-                    </div>
-                    <!--/item-->
-                </div>
-                <!--/carousel-inner--> <a class="left carousel-control" href="#myCarousel2" data-slide="prev">‹</a>
-
-                <a class="right carousel-control" href="#myCarousel2" data-slide="next">›</a>
-            </div>
-            <!--/myCarousel-->
-        </div>
-        <!--/well-->
-    </div>
-</div>
+			
 		</div>
 		<div class="tab-pane" ng-show="articles.isSelected(3)">
-			<h3>Drama</h3>
-			</hr>
+			
+			
 			<ul>
-				<li ng-repeat="storedArticle in articles.storedArticles"><a href ng-click="articles.loadArticle(storedArticle.Id)"><i>{{ storedArticle.title }}</i></a></li>
+				<li ng-repeat="storedArticle in articles.storedArticles"><a ng-click="articles.loadArticle(storedArticle.Id)"><i>{{ storedArticle.title }}</i></a></li>
 			</ul>
 		</div>
 		<div class="tab-pane" ng-show="articles.isSelected(4)">
-			<h3>Surgery</h3>
-			</hr>
+			
+			
 			<ul>
 				<li ng-repeat="article in articles.articles"><a href ng-click="articles.loadArticle(storedArticle.Id)"><i>{{ storedArticle.title }}</i></a></li>
 			</ul>
 		</div>
 
 <div>
+    <h3>{{ title }}</h3>
 	<p>{{ summary }}</p>
 </div>
 

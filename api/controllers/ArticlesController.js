@@ -30,10 +30,10 @@ module.exports = {
         return console.log(err);
       // The User was created successfully!
       } else {
-        articles = [{category: 'tourism', title: 'Des prouts partout'}, 
-        {category: 'tourism', title: 'Avalanche de merde au pays des mouches, les habitants furieux.'},
-        {category: 'kpop', title: 'P. Katerin en concert'},
-        {category: 'surgery', title: 'Toujours plus moche avec un coup de rabot'}];
+        articles = [{category: 'tourism', title: 'Des prouts partout', thumbUrl: 'https://lh4.googleusercontent.com/-5ecHJ_u84lU/AAAAAAAAAAI/AAAAAAAAQlg/hWDFicC28nE/photo.jpg', summary: 'blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah'}, 
+        {category: 'tourism', title: 'Avalanche de merde au pays des mouches, les habitants furieux.', thumbUrl: 'http://www.latruitecherbourgeoise.fr/uploads/truite_1/mouche.png', summary: 'blih blih blih blih blih blih blih blih blih blih blih blih blih blih blih blih blih blih blih blih blih blih blih blih blih blih blih blih blih blih blih blih'},
+        {category: 'kpop', title: 'P. Katerin en concert', thumbUrl: 'http://mmcdn3.hosting-media.net/jpg128/u0602537466498.jpg', summary: 'bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh bloh'},
+        {category: 'surgery', title: 'Toujours plus moche avec un coup de rabot', thumbUrl: 'http://www.gamesprays.com/files/resource_media/preview/michael-jackson-7923_preview.gif', summary: 'bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh bluh'}];
         return res.send(articles);
       }
     });
