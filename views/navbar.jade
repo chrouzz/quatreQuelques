@@ -1,10 +1,10 @@
 nav.navbar.navbar-default(role='navigation', ng-controller='demoController  as demo')
   .container-fluid
     .navbar-header
-      a.navbar-brand(href='#', ng-click='demo.modal()') Home
+      a.navbar-brand(href='#') Home
     ul.nav.navbar-nav
       li.active
-        a(href='#signup', ng-click='demo.modal()') Login
+        a(ng-click='demo.modal()') Login
           script#myModalContent.html(type='text/ng-template')
             .modal-header
               h3.modal-title I'm a modal!
