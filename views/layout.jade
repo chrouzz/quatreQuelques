@@ -13,7 +13,7 @@ html.no-js(ng-app='barmaddenApp')
     
     br
 
-    body(ng-app='barmaddenApp')
+    body
       include navbar
       .container
         block content
@@ -27,9 +27,12 @@ html.no-js(ng-app='barmaddenApp')
     //script(type="text/javascript", src="/js/sails.io.js")
 
     // listen on socket.io for incoming messages
+    script(src='js/angular.js')
+    script(src='js/angular-route.min.js')
+
     //script(type='text/javascript', src='/js/app.js')
     script(src='js/sailsmin/sailsbase.min.js')
-    script(src='js/bower/bower-vendor.min.js')
+    //script(src='js/bower/bower-vendor.min.js')
     script(src='js/barmadden/barmadden.min.js')
     script(src='js/ui-bootstrap.js')
     script(src='js/jQuery.min.js')
@@ -37,3 +40,4 @@ html.no-js(ng-app='barmaddenApp')
     script(src='js/angular-resource.min.js')
     script(src='js/angular-cookies.min.js')
     script(src='js/angular-ui-router.js')
+    script(src='js/ui-bootstrap-tpls.js')

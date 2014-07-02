@@ -1,5 +1,5 @@
 'use strict';
-var barmadden = angular.module('barmaddenApp', ['ngRoute', 'ngResource', 'ngCookies', 'ui.router']);
+var barmadden = angular.module('barmaddenApp', ['ngRoute', 'ngResource', 'ngCookies', 'ui.router', 'ui.bootstrap']);
 
 
 barmadden.run(function($rootScope, $state, Auth) {
@@ -35,11 +35,6 @@ barmadden.config(function ($stateProvider, $urlRouterProvider, AccessLevels) {
         templateUrl: '/views/signup.html',
         controller: 'SignupController'
 
-    })
-    .state('anon.login', {
-        url: '/login',
-        templateUrl: '/views/login.html',
-        controller: 'LoginController'
     })
     .state('anon.article', {
         url: '/article/view',

@@ -1,7 +1,9 @@
-<form name="signupForm" ng-submit="login()">
-    <label>Username:</label>
-    <input type="text" ng-model="user.username" name="username"/>
-    <label>Password:</label>
-    <input type="password" ng-model="user.password" name="password"/>
-    <input type="submit" value="Submit"/>
-</form>
+           <div class="modal-header">
+            <h3 class="modal-title">Modal window</h3>
+            </div>
+            <div class="modal-body">
+            <pre>{{ modal.modalText }}</pre>
+            </div>
+            <div class="modal-footer">
+            <button class="btn btn-default" ng-click="modal.cancel()">Cancel</button>
+            </div>
