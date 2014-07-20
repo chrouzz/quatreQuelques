@@ -36,6 +36,12 @@ barmadden.config(function ($stateProvider, $urlRouterProvider, AccessLevels) {
         controller: 'SignupController'
 
     })
+    .state('anon.writearticle', {
+        url: '/writearticle',
+        templateUrl: '/views/writearticle.html',
+        controller: 'ArticlesController'
+
+    })
     .state('anon.article', {
         url: '/article/view',
         templateUrl: '/views/article.html',
@@ -75,6 +81,11 @@ barmadden.config(function ($stateProvider, $urlRouterProvider, AccessLevels) {
         url: '/searchmembers', 
         templateUrl: '/views/searchmembers.html',
         controller: 'SearchMembersController'
+    })
+    .state('user.writearticle', {
+        url: '/writearticle', 
+        templateUrl: '/views/writearticle.html',
+        controller: 'ArticlesController'
     })
 });
 

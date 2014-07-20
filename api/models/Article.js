@@ -1,5 +1,5 @@
 /**
- * Message
+ * Article
  *
  * @module      :: Model
  * @description :: A short summary of how this model works and what it represents.
@@ -10,22 +10,10 @@ module.exports = {
 
   attributes: {
   	
-  	writerId: {
-      type: 'integer'
-    },
-    category: {
-      type: 'string'
-    },
-    title: {
-      type: 'string'
-    },
-    header: {
-      type: 'string'
-    },
-    body: {
-      type: 'string'
-    },
-
+  	/* e.g.
+  	nickname: 'string'
+  	*/
+    
   }
 
 };

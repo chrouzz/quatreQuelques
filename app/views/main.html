@@ -16,10 +16,10 @@
 
 <section class="tabbable" ng-controller="ArticlesController as articles">
 	<ul class="nav nav-tabs">
-		<li ng-class="{ active: articles.isSelected(1) }"><a href ng-click="articles.selectTab(1); articles.loadArticleTitles('tourism')">Tourism</a></li>
-		<li ng-class="{ active: articles.isSelected(2) }"><a href ng-click="articles.selectTab(2); articles.loadArticleTitles('kpop')">K-pop</a></li>
-		<li ng-class="{ active: articles.isSelected(3) }"><a href ng-click="articles.selectTab(3); articles.loadArticleTitles('drama')">Drama</a></li>
-		<li ng-class="{ active: articles.isSelected(4) }"><a href ng-click="articles.selectTab(4); articles.loadArticleTitles('surgery')">Surgery</a></li>
+		<li ng-class="{ active: articles.isSelected(1) }"><a href ng-mouseover="articles.selectTab(1); articles.loadArticleTitles('tourism')">Tourism</a></li>
+		<li ng-class="{ active: articles.isSelected(2) }"><a href ng-mouseover="articles.selectTab(2); articles.loadArticleTitles('kpop')">K-pop</a></li>
+		<li ng-class="{ active: articles.isSelected(3) }"><a href ng-mouseover="articles.selectTab(3); articles.loadArticleTitles('drama')">Drama</a></li>
+		<li ng-class="{ active: articles.isSelected(4) }"><a href ng-mouseover="articles.selectTab(4); articles.loadArticleTitles('surgery')">Surgery</a></li>
 	</ul>
 	
 		<div class="tab-pane" ng-show="articles.isSelected(1)">

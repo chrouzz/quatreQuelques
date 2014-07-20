@@ -47,4 +47,33 @@ angular.module('barmaddenApp').controller('ArticlesController', function ($scope
     
   };
 
+  this.article = {};
+  //$scope.message.title = "Re:";
+
+  $scope.save = function () {
+    var category = this.article.category;
+    var thumbUrl = this.article.thumbUrl;
+    var title = this.article.title;
+    var header = this.article.header;
+    var headerPictureUrl = this.article.headerPictureUrl;
+    var body = this.article.body;
+    var footerPictureUrl = this.article.footerPictureUrl;
+
+    var Article = $resource('/article');
+    $scope.article = new Article({});
+    $scope.article.authorId = $cookieStore.get('id');
+    $scope.article.category = category;
+    $scope.article.thumbUrl = thumbUrl;
+    $scope.article.title = title;
+    $scope.article.header = header;
+    $scope.article.headerPictureUrl = headerPictureUrl;
+    $scope.article.body = body;
+    $scope.article.footerPictureUrl = footerPictureUrl;
+    $scope.article.$save(function () {
+      $location.path('/');
+
+    });
+
+  };
+
 });
