@@ -5,7 +5,7 @@ angular.module('barmaddenApp').controller('SignupController', function ($scope, 
   $scope.user = new User({});
   $scope.save = function() {
   	$scope.user.$save(function () {
-  		$location.path('/');
+  	  $location.path('/');
   	});
   };
 });
