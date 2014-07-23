@@ -1,24 +1,14 @@
-nav.navbar.navbar-default(role='navigation', ng-controller='demoController  as demo')
+nav.navbar.navbar-default(role='navigation', ng-controller='NavbarController  as demo')
   .container-fluid
     .navbar-header
       a.navbar-brand(href='#') Home
     ul.nav.navbar-nav
       li.active
         a(ng-click='demo.modal()') Login
-          script#myModalContent.html(type='text/ng-template')
-            .modal-header
-              h3.modal-title I'm a modal!
-              .modal-body
-                ul
-                  li(ng-repeat='item in items')
-                    a(ng-click='selected.item = item') {{ item }}
-                | Selected:
-                b {{ selected.item }}
-              .modal-footer
-                button.btn.btn-primary(ng-click='ok()') OK
-                button.btn.btn-warning(ng-click='cancel()') Cancel
-
       li
         a(href='#profile') profile
       li
         a(href='#signup') sign in
+      li
+        a(href='#', ng-show="modal.logged") logout
+

@@ -1,13 +1,4 @@
-barmadden.controller('demoController', function($modal) {
-  this.message = 'It works!'
-  this.modal = function() {
-    $modal.open({
-      controller: 'modalController as modal',
-      templateUrl: 'views/login.html'
-    });
-  };
-})
-.controller('modalController', function($modalInstance, $scope, $state, Auth) {
+barmadden.controller('loginController', function($modalInstance, $scope, $state, Auth) {
   this.cancel = function() {
     $modalInstance.dismiss();
   };
@@ -16,8 +7,11 @@ barmadden.controller('demoController', function($modal) {
 
   this.login = function() {
     console.log("enter login controller");
+    $scope.logged= false;
     $scope.errors = [];
     Auth.login(this.user).success(function(result) {
+      $scope.logged = true;
+      console.log(this.logged);
       $state.go('user.messages');
     }).error(function(err) {
       $scope.errors.push(err);
