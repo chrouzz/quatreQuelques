@@ -7,14 +7,15 @@ barmadden.controller('loginController', function($modalInstance, $scope, $state,
 
   this.login = function() {
     console.log("enter login controller");
-    $scope.logged= false;
-    $scope.errors = [];
+    $scope.isLogged= false;
     Auth.login(this.user).success(function(result) {
-      $scope.logged = true;
-      console.log(this.logged);
-      $state.go('user.messages');
+      console.log("login successful");
+      $scope.isLogged= true;
+      $modalInstance.close($scope.isLogged);
     }).error(function(err) {
-      $scope.errors.push(err);
+      $modalInstance.close($scope.isLogged);
     });
   };
+
+  
 });

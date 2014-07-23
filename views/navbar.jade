@@ -10,5 +10,5 @@ nav.navbar.navbar-default(role='navigation', ng-controller='NavbarController  as
       li
         a(href='#signup') sign in
       li
-        a(href='#', ng-show="modal.logged") logout
+        a(ng-click='demo.logout()', ng-show='isLogged') logout
 
