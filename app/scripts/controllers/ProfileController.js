@@ -1,8 +1,5 @@
 angular.module('barmaddenApp').controller('ProfileController', function ($scope, $resource, $routeParams, Auth, $location) {
 
-
-
-
   var isLogged = Auth.isAuthenticated();
 
   if (!isLogged){
@@ -18,6 +15,6 @@ angular.module('barmaddenApp').controller('ProfileController', function ($scope,
   // }
   $scope.member = {};
   var Members = $resource('/user/:id');
-  $scope.member  = Members.get( { id: $routeParams.id } , function () {
+  $scope.member  = Members.get( { id: $scope.id } , function () {
   });
 });
