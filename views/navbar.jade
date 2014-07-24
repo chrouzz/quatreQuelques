@@ -4,11 +4,15 @@ nav.navbar.navbar-default(role='navigation', ng-controller='NavbarController  as
       a.navbar-brand(href='#') Home
     ul.nav.navbar-nav
       li.active
-        a(ng-click='demo.modal()') Login
+        a(ng-click='demo.modal()', ng-hide='isLogged') Login
       li
-        a(href='#profile') profile
+        a(href='#profile/{{id}}', ng-show='isLogged') profile
       li
-        a(href='#signup') sign in
+        a(href='#signup', ng-hide='isLogged') sign in
+      li
+        a(href='#message', ng-show='isLogged') Message
+      li
+        a(href='#writearticle', ng-show='isLogged') Article
       li
         a(ng-click='demo.logout()', ng-show='isLogged') logout
 

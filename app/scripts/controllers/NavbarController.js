@@ -11,13 +11,16 @@ barmadden.controller('NavbarController', function($modal, $scope, Auth) {
       }
     });
     modalInstance.result.then(function(isLogged) {
-      console.log(Auth.isAuthenticated());
+      
       $scope.isLogged = Auth.isAuthenticated();
+      var temp = JSON.parse($scope.isLogged);
+      $scope.id = temp.user[0].id;
     }, function () {});
   };
 
   this.logout = function() {
     Auth.logout();
     $scope.isLogged = Auth.isAuthenticated();
+    
   }
 });

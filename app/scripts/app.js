@@ -58,7 +58,7 @@ barmadden.config(function ($stateProvider, $urlRouterProvider, AccessLevels) {
     .state('user.profile', {
         url: '/profile/:id', 
         templateUrl: '/views/profile.html',
-        controller: 'MemberController'
+        controller: 'ProfileController'
 
     })
     .state('user.inbox', {
