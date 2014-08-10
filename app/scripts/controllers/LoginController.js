@@ -1,4 +1,4 @@
-barmadden.controller('loginController', function($modalInstance, $scope, $state, Auth) {
+barmadden.controller('loginController', function($modalInstance, $scope, $state, Auth, toastr) {
   this.cancel = function() {
     $modalInstance.dismiss();
   };
@@ -9,10 +9,11 @@ barmadden.controller('loginController', function($modalInstance, $scope, $state,
     console.log("enter login controller");
     $scope.isLogged= false;
     Auth.login(this.user).success(function(result) {
-      console.log("login successful");
+      toastr.success('Welcome in our world','You are succesfully logged.');
       $scope.isLogged= true;
       $modalInstance.close($scope.isLogged);
     }).error(function(err) {
+      // toastr.error('Welcome in our world','Login failed, tried again or <a href='#signup'> register </a>.');
       $modalInstance.close($scope.isLogged);
     });
   };

@@ -1,5 +1,5 @@
 'use strict';
-var barmadden = angular.module('barmaddenApp', ['ngRoute', 'ngResource', 'ngCookies', 'ui.router', 'ui.bootstrap']);
+var barmadden = angular.module('barmaddenApp', ['ngRoute', 'ngResource', 'ngCookies', 'ui.router', 'ui.bootstrap', 'toastr']);
 
 
 barmadden.run(function($rootScope, $state, Auth) {

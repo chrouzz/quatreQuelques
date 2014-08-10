@@ -1,4 +1,4 @@
-barmadden.controller('NavbarController', function($modal, $scope, Auth) {
+barmadden.controller('NavbarController', function($modal, $scope, Auth, toastr) {
   $scope.isLogged = Auth.isAuthenticated();
   this.modal = function() {
     var modalInstance = $modal.open({
@@ -20,6 +20,7 @@ barmadden.controller('NavbarController', function($modal, $scope, Auth) {
 
   this.logout = function() {
     Auth.logout();
+    toastr.error('Bye bye, hope you come back soon.', 'You are successfully logout.');
     $scope.isLogged = Auth.isAuthenticated();
     
   }
